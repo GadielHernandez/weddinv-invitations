@@ -4,7 +4,7 @@
             gradient="267deg, #1414148c 100%, #1414148c 100%"
             dark
             height="100%"
-            src="@/assets/img5.jpg"
+            :src="image"
         >
             <div class="h-100 container text-center pa-0">
                 <div>
@@ -29,7 +29,8 @@ export default {
         ...mapState({
             bride: state => state.guest.configurations.bride,
             groom: state => state.guest.configurations.groom,
-            wedding_date: state => state.guest.configurations.wedding_date
+            wedding_date: state => state.guest.configurations.wedding_date,
+            image: state => state.guest.images_urls.layout ? state.guest.images_urls.layout : ''
         })
     }
 }

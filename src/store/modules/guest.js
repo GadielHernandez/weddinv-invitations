@@ -1,15 +1,16 @@
-import { db } from '../../plugins/firebase'
+import { db, storage } from '../../plugins/firebase'
 const state = {
     wedding: null,
     id: null,
-    configurations: null,
     n_guests: null,
     name: null,
     confirm: null,
     quiz:[],
     points: null,
     ranking: [],
-    out_time: false
+    out_time: false,
+    configurations: null,
+    images_urls: {}
 }
 
 const getters = {}
@@ -18,13 +19,29 @@ const actions = {
     setWedding({ commit }, id){
         return new Promise((resolve, reject) => {
             db.doc(`configurations/${id}`).get()
-            .then( doc => {
+            .then( async doc => {
                 if(!doc.exists) return resolve(null)
-                const wedding = { id: doc.id, ...doc.data() }
+                
+                const data = doc.data()
+                const wedding = { id: doc.id, ...data }
                 commit('SET_WEDDING', wedding)
+                
+                const images_urls = {}
+                for (const key in data.images) {
+                    if (Object.hasOwnProperty.call(data.images, key)) {
+                        const image = data.images[key]
+                        if(typeof image === 'string')
+                            images_urls[key] = await storage.ref(`${doc.id}/${image}`).getDownloadURL()
+                        else
+                            images_urls[key] = await Promise.all(image.map( i => storage.ref(`${doc.id}/${i}`).getDownloadURL() ))
+                            
+                    }
+                }
+                
+                commit('SET_IMAGES', images_urls)
                 resolve(wedding)
             })
-            .catch( () => reject() )
+            .catch( (e) => reject(e) )
         })
     },
     checkGuest({ commit, state }, id){
@@ -93,6 +110,9 @@ const mutations = {
         state.wedding = payload.id
         delete payload.id
         state.configurations = payload
+    },
+    SET_IMAGES(state, payload){
+        state.images_urls = payload
     },
     UPDATE_GUEST(state, payload){
         state.id = payload.id
