@@ -3,11 +3,14 @@
         <v-main v-if="ready && !loading">
             <layout />
             <counter ref="counter" />
+            <fathers ref="fathers" />
             <location ref="location" />
-            <attend ref="attend" />
-            <description ref="description" />
-            <gallery ref="gallery" />
+            <testigos ref="testigos" />
             <gifts ref="gifts" />
+            <attend ref="attend" />
+            <dresscode />
+            <gallery />
+            <covid />
         </v-main>
         <v-main v-else-if="loading">
             <div class="main-helper">
@@ -34,22 +37,28 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import layout from '../components/layout.vue'
-import description from '../components/description.vue'
+import testigos from '../components/testigos.vue'
 import counter from '../components/counter.vue'
 import gifts from '../components/gifts.vue'
 import attend from '../components/attend.vue'
-import gallery from '../components/gallery.vue'
 import location from '../components/location.vue'
+import fathers from '../components/fathers.vue'
+import dresscode from '../components/dresscode.vue'
+import covid from '../components/covid.vue'
+import gallery from '../components/gallery.vue'
 
 export default {
     components: {
         layout,
-        description,
         counter,
         gifts,
         attend,
-        gallery,
         location,
+        fathers,
+        testigos,
+        dresscode,
+        covid,
+        gallery
     },
     name: 'App',
     computed: {
@@ -106,7 +115,7 @@ p,
 .title,
 .v-application .title,
 .title [class*='text-'] {
-    font-family: 'EB Garamond', serif !important;
+    font-family: 'Dancing Script', cursive !important;
 }
 .main-helper {
     display: flex;

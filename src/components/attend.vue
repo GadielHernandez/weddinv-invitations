@@ -1,10 +1,10 @@
 <template>
-    <div class="py-6 mt-0 mb-6 attend">
+    <div class="mt-0 mb-0 attend">
         <v-row class="pa-0">
             <v-col class="pa-0" cols="12">
-                <v-card class="mx-0" color="primary">
+                <v-card class="mx-0 pb-6 pb-md-0" color="primary">
                     <v-card-text >
-                        <p class="title text-h5 text-md-h4 my-6 text-center" v-if="!confirm && !out_time">Asistencia</p>
+                        <p class="title text-h5 text-md-h4 my-6 text-center font-weight-bold" v-if="!confirm && !out_time">Asistencia</p>
                         <p class="my-6 text-center px-6" v-if="!confirm && !out_time">Nos encantaria que nos acompañes a nuestra boda, si te es posible asistir porfavor confirma tu asistencia</p>
                         <div class="pa-0 pa-md-6 pb-0">
                             <div v-if="out_time" class="text-center">

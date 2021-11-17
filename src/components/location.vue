@@ -1,20 +1,23 @@
 <template>
     <div class="description">
-        <v-row class="py-8 py-md-16 mx-6">
-            <v-col cols="12" md="6">
-                <div class="px-md-5 px-1 py-6 mx-0 mx-md-12 text-center">
-                    <v-icon color="primary" class="icon">mdi-church</v-icon>
-                    <p class="title text-h5 text-md-h4 my-6">Ceremonia</p>
-                    <p class="text">{{ ceremony.description }}.</p>
-                    <v-btn large outlined text class="button mt-6">Ver mapa</v-btn>
-                </div>
-            </v-col>
-            <v-col cols="12" md="6">
-                <div class="px-md-5 px-1 py-6 mx-0 mx-md-12 text-center">
-                    <v-icon color="primary" class="icon">mdi-party-popper</v-icon>
-                    <p class="title text-h5 text-md-h4 my-6">Fiesta</p>
-                    <p class="text">{{ party.description }}</p>
-                    <v-btn large outlined text class="button mt-6">Ver mapa</v-btn>
+        <v-row :class="{ 'mx-6': $vuetify.breakpoint.smAndDown }">
+            <v-col cols="12" md="6" offset-md="3" class="px-0" :class="{ 'text-caption': $vuetify.breakpoint.smAndDown }">
+                <div class="px-md-5 px-0 py-6 mx-0 text-center">
+                    <p class=" mb-6" >{{ ceremony.description }}</p>
+                    <v-divider class="line mt-6"></v-divider>
+                    <v-row>
+                        <v-col cols="4" class="text-rigth d-flex">
+                            <p class="ma-auto">08 ENERO</p>
+                            <span class="ml-2"><v-divider class="line" vertical></v-divider></span>
+                        </v-col>
+                        <v-col cols="8">
+                            <p class="text-left my-1 font-weight-bold" >Los Generales Sendero la Fe</p>
+                            <p class="text-left my-1 font-weight-bold">7:00PM</p>
+                            
+                        </v-col>
+                    </v-row>
+                    <v-divider class="line mb-6"></v-divider>
+                    <v-btn large depressed class="button mt-6" color="primary" :href="ceremony.link">Ver mapa</v-btn>
                 </div>
             </v-col>
         </v-row>
@@ -38,7 +41,6 @@ export default {
 .description{
     max-width: 100vw;
     overflow: hidden;
-    padding-top: 30px;
     padding-bottom: 30px;
 }
 .icon{
@@ -47,7 +49,8 @@ export default {
 .text{
     line-height: 33px;
 }
-.button{
-    border: 2px solid var(--v-primary-base) !important;
+.line{
+    border-color: var(--v-primary-base) !important;
+    margin: auto;
 }
 </style>

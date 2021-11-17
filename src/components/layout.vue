@@ -7,14 +7,11 @@
             :src="image"
         >
             <div class="h-100 container text-center pa-0">
-                <div>
-                    <p class="text-md-h6 text-subtitle-1">¡NOS CASAMOS!</p>
-                </div>
                 <div class="center container">
-                    <p class="text-md-h1 text-h3 title primary--text text-shadow">{{ groom.firstname }} y {{ bride.firstname }}</p>              
-                </div>
-                <div>
-                    <p class="text-md-h6 text-overline">{{ wedding_date.string }}</p>
+                    <p class="text-md-h6 text-subtitle-1">¡Nos casamos!</p>
+                    <p class="text-md-h1 text-h3 title text-shadow">{{ groom.firstname }} & {{ bride.firstname }}</p> 
+                    <v-divider class="line" />
+                    <!-- <p class="text-md-h6 text-subtitle-1 text-caption">{{ description }}</p>             -->
                 </div>
             </div>
         </v-img>
@@ -30,7 +27,8 @@ export default {
             bride: state => state.guest.configurations.bride,
             groom: state => state.guest.configurations.groom,
             wedding_date: state => state.guest.configurations.wedding_date,
-            image: state => state.guest.images_urls.layout ? state.guest.images_urls.layout : ''
+            image: state => state.guest.images_urls.layout ? state.guest.images_urls.layout : '',
+            description: state => state.guest.configurations.history.description
         })
     }
 }
@@ -38,11 +36,11 @@ export default {
 
 <style scoped>
 .layout{
-    height: 75vh;
+    height: 80vh;
     width: 100vw;
 }
 .layout-md{
-    height: 85vh;
+    height: 80vh;
     width: 100vw;
 }
 .container{
@@ -52,13 +50,13 @@ export default {
     justify-content: center;
 }
 .center{
-    height: 70%;
-    font-style: italic;
+    height: 30%;
 }
 .text-shadow{
     text-shadow: 0 0 8px #3e3e3e;
 }
 .line{
     border-color: var(--v-primary-base) !important;
+    width: 60%;
 }
 </style>
