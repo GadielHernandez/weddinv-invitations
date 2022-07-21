@@ -5,7 +5,7 @@
                 <div class="text-center">
                     <v-icon large >mdi-tie</v-icon>
                     <v-icon large >mdi-shoe-heel</v-icon>
-                    <p class="primary--text font-weight-bold my-1">Codigo de vestimenta casual</p>
+                    <p class="primary--text font-weight-bold my-1">Codigo de vestimenta semi-formal</p>
                 </div>
             </v-col>
         </v-row>

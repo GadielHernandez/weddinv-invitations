@@ -9,7 +9,7 @@
             <div class="h-100 container text-center pa-0">
                 <div class="center container">
                     <p class="text-md-h6 text-subtitle-1">¡Nos casamos!</p>
-                    <p class="text-md-h1 text-h3 title text-shadow">{{ groom.firstname }} & {{ bride.firstname }}</p> 
+                    <p class="text-md-h1 text-h3 title text-shadow">{{ bride.firstname }} & {{ groom.firstname }}</p> 
                     <v-divider class="line" />
                     <!-- <p class="text-md-h6 text-subtitle-1 text-caption">{{ description }}</p>             -->
                 </div>

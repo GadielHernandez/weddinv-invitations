@@ -7,12 +7,12 @@
                     <v-divider class="line mt-6"></v-divider>
                     <v-row>
                         <v-col cols="4" class="text-rigth d-flex">
-                            <p class="ma-auto">08 ENERO</p>
+                            <p class="ma-auto">{{ wedding_date.string }}</p>
                             <span class="ml-2"><v-divider class="line" vertical></v-divider></span>
                         </v-col>
                         <v-col cols="8">
-                            <p class="text-left my-1 font-weight-bold" >Los Generales Sendero la Fe</p>
-                            <p class="text-left my-1 font-weight-bold">7:00PM</p>
+                            <p class="text-left my-1 font-weight-bold" >{{ ceremony.place }}</p>
+                            <p class="text-left my-1 font-weight-bold">{{ wedding_date.time_string }}</p>
                             
                         </v-col>
                     </v-row>
@@ -31,7 +31,8 @@ export default {
     computed:{
         ...mapState({
             ceremony: state => state.guest.configurations.ceremony,
-            party: state => state.guest.configurations.party
+            party: state => state.guest.configurations.party,
+            wedding_date: state => state.guest.configurations.wedding_date
         })
     }
 }
