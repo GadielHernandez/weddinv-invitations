@@ -8,10 +8,9 @@
         >
             <div class="h-100 container text-center pa-0">
                 <div class="center container">
-                    <p class="text-md-h6 text-subtitle-1">¡Nos casamos!</p>
-                    <p class="text-md-h1 text-h3 title text-shadow">{{ bride.firstname }} & {{ groom.firstname }}</p> 
-                    <v-divider class="line" />
-                    <!-- <p class="text-md-h6 text-subtitle-1 text-caption">{{ description }}</p>             -->
+                    <p class="text-md-h1 text-h3 title text-shadow my-3">{{ bride.firstname }} & {{ groom.firstname }}</p> 
+                    <v-divider class="line" /> 
+                    <p class="text-md-h6 text-subtitle my-3">{{ subtitle }}</p>
                 </div>
             </div>
         </v-img>
@@ -28,7 +27,7 @@ export default {
             groom: state => state.guest.configurations.groom,
             wedding_date: state => state.guest.configurations.wedding_date,
             image: state => state.guest.images_urls.layout ? state.guest.images_urls.layout : '',
-            description: state => state.guest.configurations.history.description
+            subtitle: state => state.guest.configurations.layout.subtitle
         })
     }
 }

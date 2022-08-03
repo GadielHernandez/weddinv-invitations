@@ -1,95 +1,90 @@
 <template>
-    <div class="mt-0 mb-0 attend">
-        <v-row class="pa-0">
-            <v-col class="pa-0" cols="12">
-                <v-card class="mx-0 pb-6 pb-md-0" color="primary">
-                    <v-card-text >
-                        <p class="title text-h5 text-md-h4 my-6 text-center font-weight-bold" v-if="!confirm && !out_time">Asistencia</p>
-                        <p class="my-6 text-center px-6" v-if="!confirm && !out_time">Nos encantaria que nos acompañes a nuestra boda, si te es posible asistir porfavor confirma tu asistencia</p>
-                        <div class="pa-0 pa-md-6 pb-0">
-                            <div v-if="out_time" class="text-center">
-                                <v-icon x-large class="icon"
-                                    >mdi-clock-outline</v-icon
-                                >
-                                <p class="mt-3">
-                                    La fecha limite para confirmar pasó
-                                </p>
-                            </div>
-                            <div v-if="!confirm && !out_time" class="mx-0 mx-md-16">
-                                <v-row class="mx-0 mx-md-10">
-                                    <v-col cols="12" md="6">
-                                        <v-select
-                                            v-model="guests_selected"
-                                            outlined
-                                            flat
-                                            solo
-                                            :items="numberGuests"
-                                            label="Numero de asistentes"
-                                            hide-details
-                                        ></v-select>
-                                    </v-col>
-                                    <v-col cols="12" md="6">
-                                        <v-text-field
-                                            v-model="phone"
-                                            label="Telefono"
-                                            outlined
-                                            flat
-                                            solo
-                                            hide-details
-                                        ></v-text-field>
-                                    </v-col>
-                                </v-row>
-                            </div>
-                            <div
-                                v-if="confirm && !out_time"
-                                class="text-center py-3"
-                            >
-                                <v-icon x-large class="icon"
-                                    >mdi-check-circle-outline</v-icon
-                                >
-                                <p >
-                                    Gracias por tu respuesta
-                                </p>
-                                <p v-if="confirm.answer">
-                                    ¡{{ name }}, los esperamos en la boda!
-                                </p>
-                            </div>
-                        </div>
-                    </v-card-text>
-                    <v-card-actions v-if="!confirm && !out_time" class="pa-0 pa-md-6 py-0 pb-3 text-center">
-                        <div class="pa-0 pa-md-6 pt-0" style="width: 100%">
-                            <p
-                                v-if="!kids_allowed"
-                                class="font-weight-black text-center"
-                                style="font-size: 10px"
-                            >
-                                No se permiten niños
+    <v-card color="primary" flat class="rounded-0 attend">
+        <v-card-text class="d-flex">
+            <v-card color="white" max-width="800" class="mx-auto">
+                <v-card-text class="px-8 px-md-12">
+                    <div v-if="!confirm && !out_time" class="text-center">
+                        <div class="py-6">
+                            <p class="text-h5 text-sm-h4 my-3 rsvp-title">
+                                {{ name }}
                             </p>
-                            <div>
-                                <v-btn
-                                    outlined
-                                    color="primary darken-4"
-                                    @click="goToWedding"
-                                >
-                                    Confirmar
-                                </v-btn>
-                            </div>
-                            <div>
-                                <v-btn
-                                    text
-                                    color="primary darken-4"
-                                    class="mt-3"
-                                    @click="cancelInvitation"
-                                >
-                                    No asistiré
-                                </v-btn>
+                        </div>
+
+                        <div class="d-flex py-3">
+                            <div class="mx-auto">
+                                <v-divider color class="line " />
                             </div>
                         </div>
-                    </v-card-actions>
-                </v-card>
-            </v-col>
-        </v-row>
-    </div>
+
+                        <div class="py-6">
+                            <p class="mb-2 text-caption">
+                                AGRADECEMOS SU CONFIRMACIÓN ANTES DEL 20 AGOSTO
+                            </p>
+                            <v-select
+                                v-model="guests_selected"
+                                outlined
+                                flat
+                                solo
+                                :items="numberGuests"
+                                label="Numero de asistentes"
+                                hide-details
+                                color="primary"
+                            ></v-select>
+                            <v-row class="mt-3">
+                                <v-col order-sm="last" cols="12" md="6">
+                                    <v-btn 
+                                        block 
+                                        depressed 
+                                        color="primary"
+                                        @click="goToWedding"
+                                    >
+                                        Asistire
+                                    </v-btn>
+                                </v-col>
+                                <v-col  cols="12" md="6">
+                                    <v-btn 
+                                        block 
+                                        depressed 
+                                        outlined
+                                        color="primary"
+                                        @click="cancelInvitation"
+                                    >
+                                        No Asistire
+                                    </v-btn>
+                                </v-col>
+                            </v-row>
+                        </div>
+                    </div>
+                    <div v-if="confirm && !out_time" class="text-center px-sm-8">
+                        <div class="text-h5 text-sm-h4 py-8 rsvp-title">
+                            {{ name }}
+                        </div>
+                        <div class="d-flex py-3">
+                            <div class="mx-auto">
+                                <v-divider color class="line " />
+                            </div>
+                        </div>
+                        <div>
+                            <p class="my-3 rsvp-title">AGRADECEMOS SU RESPUESTA</p>
+                        </div>
+                    </div>
+                    <div v-if="out_time" class="text-center px-sm-8" >
+                        <div class="text-h5 text-sm-h4 py-8 rsvp-title">
+                            {{ name }}
+                        </div>
+                        <div class="d-flex py-3">
+                            <div class="mx-auto">
+                                <v-divider color class="line " />
+                            </div>
+                        </div>
+                        <div>
+                            <p class="my-3 rsvp-title">LA INVITACION EXPIRÓ</p>
+                        </div>
+                    </div>
+                </v-card-text>
+            </v-card>
+        </v-card-text>
+    </v-card>
 </template>
 
 <script>
@@ -103,13 +98,14 @@ export default {
             n_guests: (state) => state.guest.n_guests,
             confirm: (state) => state.guest.confirm,
             out_time: (state) => state.guest.out_time,
-            kids_allowed: state => state.guest.configurations.kids
+            kids_allowed: (state) => state.guest.configurations.kids,
+            image: (state) =>
+                state.guest.images_urls && state.guest.images_urls.layout,
         }),
     },
     data() {
         return {
             numberGuests: [],
-            phone: '',
             guests_selected: null,
         }
     },
@@ -119,17 +115,20 @@ export default {
             this.numberGuests = []
             if (this.n_guests)
                 for (let index = 0; index < this.n_guests; index++) {
-                    this.numberGuests.push(index + 1)
+                    this.numberGuests.push({
+                        text: `${index + 1} personas`,
+                        value: index + 1
+                    })
                 }
         },
         async goToWedding() {
-            if(!this.guests_selected || this.phone === '') return
+            if (!this.guests_selected) return
+            console.log(this.guests_selected)
             await this.doConfirmation({
                 id: this.id,
                 payload: {
                     answer: true,
-                    n_guests: this.guests_selected,
-                    phone: this.phone,
+                    n_guests: this.guests_selected
                 },
             })
         },
@@ -158,16 +157,12 @@ export default {
     max-width: 100vw;
     overflow: hidden;
 }
-.attend-margin {
-    margin-top: 100px !important;
+.rsvp-title {
+    letter-spacing: 4px !important;
 }
-.formAttend {
-    border: 1px solid var(--v-primary-base);
-}
-.text {
-    max-width: 500px;
-}
-.icon {
-    font-size: 60px !important;
+.line {
+    width: 100px;
+    border-color: var(--v-primary-base);
+    border-width: 2px 0 0 0;
 }
 </style>

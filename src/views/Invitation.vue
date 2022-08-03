@@ -3,14 +3,11 @@
         <v-main v-if="ready && !loading">
             <layout />
             <counter ref="counter" />
-            <fathers ref="fathers" />
-            <location ref="location" />
-            <testigos ref="testigos" />
-            <gifts ref="gifts" />
+            <fathers ref="fathers"  class="my-md-8"/>
             <attend ref="attend" />
-            <dresscode />
+            <location ref="location" />
+            <gifts ref="gifts" />
             <gallery />
-            <covid />
         </v-main>
         <v-main v-else-if="loading">
             <div class="main-helper">
@@ -37,14 +34,11 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import layout from '../components/layout.vue'
-import testigos from '../components/testigos.vue'
 import counter from '../components/counter.vue'
 import gifts from '../components/gifts.vue'
 import attend from '../components/attend.vue'
 import location from '../components/location.vue'
 import fathers from '../components/fathers.vue'
-import dresscode from '../components/dresscode.vue'
-import covid from '../components/covid.vue'
 import gallery from '../components/gallery.vue'
 
 export default {
@@ -55,9 +49,6 @@ export default {
         attend,
         location,
         fathers,
-        testigos,
-        dresscode,
-        covid,
         gallery
     },
     name: 'App',
