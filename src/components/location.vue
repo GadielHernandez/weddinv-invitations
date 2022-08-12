@@ -1,44 +1,49 @@
 <template>
     <div class="location py-12 py-md-16">
-        <v-row class="small-font">
-            <v-col class="text-center py-6 py-md-3" cols="12" sm="4">
+        <v-row>
+            <v-col class="text-center">
+                <p class="text-h6 text-md-h5 title primary--text text-uppercase mb-6">{{ date.day }} {{ date.month }} {{ date.year }} </p>
+            </v-col>
+        </v-row>
+        <v-row class="small-font" v-if="locations && dresscode" justify="center">
+            <v-col class="text-center py-6 py-md-3" cols="12" sm="4" v-if="locations.ceremony">
                 <p class="mb-1">
                     Ceremonia Religiosa
                 </p>
-                <p class="mb-1 font-weight-medium text-uppercase">{{ ceremony.place }}</p>
-                <p class="mb-1 ">{{ wedding_date.time_string }}</p>
+                <p class="mb-1 font-weight-medium text-uppercase">{{ locations.ceremony.place }}</p>
+                <p class="mb-1 ">{{ locations.ceremony.time }}</p>
                 <v-btn
                     color="primary"
                     outlined
                     class="mt-6"
-                    :href="ceremony.link"
+                    :href="locations.ceremony.link"
                 >
                     Ubicación
                 </v-btn>
             </v-col>
-            <v-col class="text-center py-6 py-md-3" cols="12" sm="4">
+            <v-col class="text-center py-6 py-md-3" cols="12" sm="4" v-if="locations.party">
                 <p class="mb-1 ">Recepción</p>
-                <p class="mb-1 font-weight-medium text-uppercase">Jardin El Angel</p>
-                <p class="mb-1 ">{{ wedding_date.time_string }}</p>
+                <p class="mb-1 font-weight-medium text-uppercase">{{ locations.party.place }}</p>
+                <p class="mb-1 ">{{ locations.ceremony.time }}</p>
                 <v-btn
                     color="primary"
                     outlined
                     class="mt-6"
-                    :href="ceremony.link"
+                    :href="locations.party.link"
                 >
                     Ubicación
                 </v-btn>
             </v-col>
-            <v-col class="text-center py-6 py-md-3" cols="12" sm="4">
+            <v-col class="text-center py-6 py-md-3" cols="12" sm="4" v-if="dresscode">
                 <p class="mb-1 ">
                     Código de Vestimenta
                 </p>
-                <p class="mb-1 font-weight-medium text-uppercase">Etiqueta / Formal</p>
+                <p class="mb-1 font-weight-medium text-uppercase">{{ dresscode.type }}</p>
                 <v-btn
                     color="primary"
                     outlined
                     class="mt-8 mt-sm-13"
-                    href="https://www.pinterest.com.mx/search/pins/?q=outfit%20formal%20boda"
+                    :href="dresscode.ideas"
                 >
                     Ideas
                 </v-btn>
@@ -53,9 +58,9 @@ export default {
     name: 'location',
     computed: {
         ...mapState({
-            ceremony: (state) => state.guest.configurations.ceremony,
-            party: (state) => state.guest.configurations.party,
-            wedding_date: (state) => state.guest.configurations.wedding_date,
+            locations: (state) => state.guest.configurations.locations,
+            dresscode: (state) => state.guest.configurations.dresscode,
+            date: (state) => state.guest.configurations.date
         }),
     },
 }

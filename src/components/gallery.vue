@@ -1,5 +1,5 @@
 <template>
-    <div class="gallery">
+    <div class="gallery" v-if="images">
         <v-row>
             <v-col v-for="(img, index) in images" :key="index" :cols="12" :sm="width" class="px-0 px-md-3">
                 <v-img :src="img"  width="100%"  max-width="50vh" :aspect-ratio="1" class="ma-auto"/>
@@ -19,9 +19,20 @@ export default {
     name: 'Gallery',
     computed:{
         ...mapState({
-            images: state => state.guest.images_urls.galery ? state.guest.images_urls.galery : [],
+            images: state => {
+                const images = state.guest.configurations.gallery.images || {}
+                const img_array = []
+                for (const url in images) {
+                    if (Object.hasOwnProperty.call(images, url)) {
+                        img_array.push(images[url])
+                    }
+                }
+                return img_array
+            } ,
             width: state => {
-                const n_images = state.guest.images_urls.galery && state.guest.images_urls.galery.length
+                const images = state.guest.configurations.gallery.images || {}
+                const img_array = Object.keys(images)
+                const n_images = img_array.length
                 if(!n_images) return 12
                 return n_images % 4 === 0 ? 3 : 4
             }

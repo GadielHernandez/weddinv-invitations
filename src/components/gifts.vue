@@ -1,5 +1,5 @@
 <template>
-    <div class="gifts px-3 py-3 py-md-12">
+    <div class="gifts px-3 py-3 py-md-12" v-if="gifts">
         <v-row class="">
             <v-col cols="12">
                 <div class="px-md-5 px-1 pt-6 mx-0 mx-md-12 text-center">
@@ -13,7 +13,7 @@
             </v-col>
         </v-row>
         <v-row class="text-center pb-6" justify="center">
-            <v-col v-if="gifts.liverpool.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
+            <v-col v-if="gifts.liverpool && gifts.liverpool.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
                 <div class="mx-3">
                     <p class="title-gift text-h6 my-0">LIVERPOOL</p>
                     <a
@@ -24,7 +24,7 @@
                     </a>
                 </div>
             </v-col>
-            <v-col v-if="gifts.sears.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
+            <v-col v-if="gifts.sears && gifts.sears.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
                 <div>
                     <p class="title-gift text-h6 my-0">SEARS</p>
                     <a :href="gifts.sears.link" style="text-decoration: none">
@@ -32,7 +32,7 @@
                     </a>
                 </div>
             </v-col>
-            <v-col v-if="gifts.amazon.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
+            <v-col v-if="gifts.amazon && gifts.amazon.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
                 <div class="mx-3">
                     <p class="title-gift text-h6 my-0">AMAZON</p>
                     <a :href="gifts.amazon.link" style="text-decoration: none">
@@ -40,13 +40,13 @@
                     </a>
                 </div>
             </v-col>
-            <v-col v-if="gifts.card.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
+            <v-col v-if="gifts.card && gifts.card.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
                 <div class="mx-3">
                     <p class="title-gift text-h6 my-0">TRANSFERENCIA</p>
                     <a @click="dataDialog = true">Ver datos</a>
                 </div>
             </v-col>
-            <v-col v-if="gifts.gift.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
+            <v-col v-if="gifts.gift && gifts.gift.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
                 <div class="mx-3">
                     <p class="title-gift text-h6 my-0">REGALO</p>
                     <p>
@@ -54,7 +54,7 @@
                     </p>
                 </div>
             </v-col>
-            <v-col v-if="gifts.gift.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
+            <v-col v-if="gifts.cash && gifts.cash.active" class="my-3 py-6" :cols="rows.cols" :sm="rows.sm">
                 <div class="mx-3">
                     <p class="title-gift text-h6 my-0">SOBRE</p>
                     <p>
@@ -63,7 +63,7 @@
                 </div>
             </v-col>
         </v-row>
-        <v-dialog v-model="dataDialog" max-width="600">
+        <v-dialog v-model="dataDialog" max-width="600" v-if="gifts.card">
             <v-card>
                 <v-card-title class="headline"
                     >Datos para transferencia</v-card-title

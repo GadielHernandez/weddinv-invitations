@@ -3,7 +3,7 @@
         <v-main v-if="ready && !loading">
             <layout />
             <counter ref="counter" />
-            <fathers ref="fathers"  class="my-md-8"/>
+            <parents ref="parents"  class="my-md-8"/>
             <attend ref="attend" />
             <location ref="location" />
             <gifts ref="gifts" />
@@ -38,7 +38,7 @@ import counter from '../components/counter.vue'
 import gifts from '../components/gifts.vue'
 import attend from '../components/attend.vue'
 import location from '../components/location.vue'
-import fathers from '../components/fathers.vue'
+import parents from '../components/parents.vue'
 import gallery from '../components/gallery.vue'
 
 export default {
@@ -48,14 +48,14 @@ export default {
         gifts,
         attend,
         location,
-        fathers,
+        parents,
         gallery
     },
     name: 'App',
     computed: {
         ...mapState({
             ready: (state) =>
-                state.guest.wedding && state.guest.configurations && state.guest.id,
+                state.guest.wedding && state.guest.configurations,
         }),
     },
     data() {
@@ -77,12 +77,11 @@ export default {
     },
     async mounted() {
         try {
-            const { wedding } = this.$route.params
-            const { inv } = this.$route.query
-            if (!wedding) return
+            await this.setWedding()
+            const { guest } = this.$route.params
+            if (!guest) return
 
-            await this.setWedding(wedding)
-            await this.checkGuest(inv)
+            await this.checkGuest(guest)
             this.loading = false
         } catch (error) {
             console.log(error)

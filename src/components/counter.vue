@@ -3,25 +3,49 @@
         <v-col>
             <div>
                 <p class="minutes mt-3 mb-0 text-md-h3 text-h4">{{ days }}</p>
-                <p class="description mt-1 mb-3" :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }">dias</p>
+                <p
+                    class="description mt-1 mb-3"
+                    :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }"
+                >
+                    dias
+                </p>
             </div>
         </v-col>
         <v-col>
             <div>
                 <p class="minutes mt-3 mb-0 text-md-h3 text-h4">{{ hours }}</p>
-                <p class="description mt-1 mb-3" :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }">horas</p>
+                <p
+                    class="description mt-1 mb-3"
+                    :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }"
+                >
+                    horas
+                </p>
             </div>
         </v-col>
         <v-col>
             <div>
-                <p class="minutes mt-3 mb-0 text-md-h3 text-h4">{{ minutes }}</p>
-                <p class="description mt-1 mb-3" :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }">minutos</p>
+                <p class="minutes mt-3 mb-0 text-md-h3 text-h4">
+                    {{ minutes }}
+                </p>
+                <p
+                    class="description mt-1 mb-3"
+                    :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }"
+                >
+                    minutos
+                </p>
             </div>
         </v-col>
         <v-col>
             <div>
-                <p class="minutes mt-3 mb-0 text-md-h3 text-h4">{{ seconds }}</p>
-                <p class="description mt-1 mb-3" :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }">segundos</p>
+                <p class="minutes mt-3 mb-0 text-md-h3 text-h4">
+                    {{ seconds }}
+                </p>
+                <p
+                    class="description mt-1 mb-3"
+                    :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }"
+                >
+                    segundos
+                </p>
             </div>
         </v-col>
     </v-row>
@@ -31,10 +55,10 @@
 import { mapState } from 'vuex'
 export default {
     name: 'Counter',
-    computed:{
+    computed: {
         ...mapState({
-            date: state => state.guest.configurations.wedding_date.milis
-        })
+            date: (state) => state.guest.configurations.date,
+        }),
     },
     data() {
         return {
@@ -57,17 +81,19 @@ export default {
             const hours = minutes * 60
             const days = hours * 24
 
-            this.days = ('0' + parseInt((this.date - now_milis) / days)).slice(
-                -2
-            )
+            this.days = (
+                '0' + parseInt((this.date.milis - now_milis) / days)
+            ).slice(-2)
             this.hours = (
                 '0' +
-                parseInt((this.date - now_milis - this.days * days) / hours)
+                parseInt(
+                    (this.date.milis - now_milis - this.days * days) / hours
+                )
             ).slice(-2)
             this.minutes = (
                 '0' +
                 parseInt(
-                    (this.date -
+                    (this.date.milis -
                         now_milis -
                         this.days * days -
                         this.hours * hours) /
@@ -77,7 +103,7 @@ export default {
             this.seconds = (
                 '0' +
                 parseInt(
-                    (this.date -
+                    (this.date.milis -
                         now_milis -
                         this.days * days -
                         this.hours * hours -
@@ -102,13 +128,13 @@ export default {
     overflow: hidden;
     margin: 0;
 }
-.minutes{
+.minutes {
     font-weight: 100;
 }
 .description {
     font-size: 12px;
 }
-.description-md{
+.description-md {
     font-size: 18px;
 }
 .rectangule {

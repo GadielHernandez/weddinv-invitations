@@ -1,16 +1,17 @@
 <template>
     <div class="d-flex layout" :class="{ 'layout-md': $vuetify.breakpoint.mdAndUp }">
         <v-img
+            v-if="layout"
             gradient="267deg, #1414148c 100%, #1414148c 100%"
             dark
             height="100%"
-            :src="image"
+            :src="layout.images.background"
         >
             <div class="h-100 container text-center pa-0">
                 <div class="center container">
                     <p class="text-md-h1 text-h3 title text-shadow my-3">{{ bride.firstname }} & {{ groom.firstname }}</p> 
                     <v-divider class="line" /> 
-                    <p class="text-md-h6 text-subtitle my-3">{{ subtitle }}</p>
+                    <p class="text-md-h6 text-subtitle my-3">{{ layout.text }}</p>
                 </div>
             </div>
         </v-img>
@@ -26,8 +27,7 @@ export default {
             bride: state => state.guest.configurations.bride,
             groom: state => state.guest.configurations.groom,
             wedding_date: state => state.guest.configurations.wedding_date,
-            image: state => state.guest.images_urls.layout ? state.guest.images_urls.layout : '',
-            subtitle: state => state.guest.configurations.layout.subtitle
+            layout: state => state.guest.configurations.layout
         })
     }
 }
