@@ -5,6 +5,7 @@
             gradient="267deg, #1414148c 100%, #1414148c 100%"
             dark
             height="100%"
+            :position="$vuetify.breakpoint.mdAndUp ? '50% 25%' : null"
             :src="layout.images.background"
         >
             <div class="h-100 container text-center pa-0">

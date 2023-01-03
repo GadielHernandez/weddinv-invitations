@@ -24,7 +24,7 @@
             <v-col class="text-center py-6 py-md-3" cols="12" sm="4" v-if="locations.party">
                 <p class="mb-1 ">Recepción</p>
                 <p class="mb-1 font-weight-medium text-uppercase">{{ locations.party.place }}</p>
-                <p class="mb-1 ">{{ locations.ceremony.time }}</p>
+                <p class="mb-1 ">{{ locations.party.time }}</p>
                 <v-btn
                     color="primary"
                     outlined

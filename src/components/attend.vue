@@ -18,7 +18,7 @@
 
                         <div class="py-6">
                             <p class="mb-2 text-caption">
-                                AGRADECEMOS SU CONFIRMACIÓN ANTES DEL 20 AGOSTO
+                                AGRADECEMOS SU CONFIRMACIÓN ANTES DEL 28 AGOSTO
                             </p>
                             <v-select
                                 v-model="guests_selected"

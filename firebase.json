@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "invitations-wedding",
+    "site": "alondrayalonso",
     "public": "dist",
     "ignore": [
       "firebase.json",
