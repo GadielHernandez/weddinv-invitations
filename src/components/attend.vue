@@ -1,25 +1,22 @@
 <template>
-    <v-card color="primary" flat class="rounded-0 attend">
-        <v-card-text class="d-flex">
-            <v-card color="white" max-width="800" class="mx-auto">
+    <div flat class="attend pa-4">
+        <div class="d-flex background-image px-3 py-8 rounded-lg">
+            <v-card color="white" max-width="800" class="mx-auto rounded-lg">
                 <v-card-text class="px-8 px-md-12">
                     <div v-if="!confirm && !out_time" class="text-center">
-                        <div class="py-6">
-                            <p class="text-h5 text-sm-h4 my-3 rsvp-title">
+                        <div class="pt-6">
+                            <p class="text-h5 text-sm-h4 my-3 font-weight-medium">
                                 {{ name }}
                             </p>
                         </div>
 
                         <div class="d-flex py-3">
-                            <div class="mx-auto">
-                                <v-divider color class="line " />
+                            <div class="mx-auto rotate-img">
+                                <v-img src="@/assets/leaf1.png" contain  height="50"/>
                             </div>
                         </div>
 
                         <div class="py-6">
-                            <p class="mb-2 text-caption">
-                                AGRADECEMOS SU CONFIRMACIÓN ANTES DEL 28 AGOSTO
-                            </p>
                             <v-select
                                 v-model="guests_selected"
                                 outlined
@@ -31,7 +28,7 @@
                                 color="primary"
                             ></v-select>
                             <v-row class="mt-3">
-                                <v-col order-sm="last" cols="12" md="6">
+                                <v-col order-sm="last" cols="12" md="6" class="pb-1 pb-sm-4">
                                     <v-btn 
                                         block 
                                         depressed 
@@ -41,7 +38,7 @@
                                         Asistire
                                     </v-btn>
                                 </v-col>
-                                <v-col  cols="12" md="6">
+                                <v-col  cols="12" md="6"  class="pt-1 pt-sm-4">
                                     <v-btn 
                                         block 
                                         depressed 
@@ -54,6 +51,9 @@
                                 </v-col>
                             </v-row>
                         </div>
+                        <p class="mb-2 text-caption">
+                            AGRADECEMOS SU CONFIRMACIÓN ANTES DEL 28 AGOSTO
+                        </p>
                     </div>
                     <div v-if="confirm && !out_time" class="text-center px-sm-8">
                         <div class="text-h5 text-sm-h4 py-8 rsvp-title">
@@ -83,8 +83,8 @@
                     </div>
                 </v-card-text>
             </v-card>
-        </v-card-text>
-    </v-card>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -157,8 +157,16 @@ export default {
     max-width: 100vw;
     overflow: hidden;
 }
-.rsvp-title {
-    letter-spacing: 4px !important;
+.background-image {
+    background-image: url('~@/assets/background.png');
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 100%;
+}
+.rotate-img {
+        transform: rotate(13deg);
 }
 .line {
     width: 100px;

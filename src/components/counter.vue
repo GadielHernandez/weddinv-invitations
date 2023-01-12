@@ -1,47 +1,47 @@
 <template>
-    <v-row class="counter text-center primary--text">
-        <v-col>
+    <v-row class="counter text-center primary--text pa-2 pa-md-4">
+        <v-col class="number-container">
             <div>
-                <p class="minutes mt-3 mb-0 text-md-h3 text-h4">{{ days }}</p>
+                <p class="minutes mt-0 mb-0 text-md-h3 text-h4 font-weight-medium">{{ days }}</p>
                 <p
-                    class="description mt-1 mb-3"
+                    class="description mt-0 mb-0"
                     :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }"
                 >
                     dias
                 </p>
             </div>
         </v-col>
-        <v-col>
+        <v-col class="number-container">
             <div>
-                <p class="minutes mt-3 mb-0 text-md-h3 text-h4">{{ hours }}</p>
+                <p class="minutes mt-0 mb-0 text-md-h3 text-h4 font-weight-medium">{{ hours }}</p>
                 <p
-                    class="description mt-1 mb-3"
+                    class="description mt-0 mb-0"
                     :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }"
                 >
                     horas
                 </p>
             </div>
         </v-col>
-        <v-col>
+        <v-col class="number-container">
             <div>
-                <p class="minutes mt-3 mb-0 text-md-h3 text-h4">
+                <p class="minutes mt-0 mb-0 text-md-h3 text-h4 font-weight-medium">
                     {{ minutes }}
                 </p>
                 <p
-                    class="description mt-1 mb-3"
+                    class="description mt-0 mb-0"
                     :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }"
                 >
                     minutos
                 </p>
             </div>
         </v-col>
-        <v-col>
+        <v-col class="number-container">
             <div>
-                <p class="minutes mt-3 mb-0 text-md-h3 text-h4">
+                <p class="minutes mt-0 mb-0 text-md-h3 text-h4 font-weight-medium">
                     {{ seconds }}
                 </p>
                 <p
-                    class="description mt-1 mb-3"
+                    class="description mt-0 mb-0"
                     :class="{ 'description-md': $vuetify.breakpoint.mdAndUp }"
                 >
                     segundos
@@ -80,10 +80,9 @@ export default {
             const minutes = seconds * 60
             const hours = minutes * 60
             const days = hours * 24
-
-            this.days = (
-                '0' + parseInt((this.date.milis - now_milis) / days)
-            ).slice(-2)
+            
+            this.days = parseInt((this.date.milis - now_milis) / days)
+            
             this.hours = (
                 '0' +
                 parseInt(
@@ -121,12 +120,15 @@ export default {
 
 <style scoped>
 .counter {
-    background-color: var(--v-black1-base);
+    background-color: white;
     padding-top: 15px;
     padding-bottom: 15px;
     max-width: 100vw;
     overflow: hidden;
     margin: 0;
+}
+.number-container{
+    background-color: white;
 }
 .minutes {
     font-weight: 100;

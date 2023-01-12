@@ -1,21 +1,11 @@
 <template>
-    <div class="d-flex layout" :class="{ 'layout-md': $vuetify.breakpoint.mdAndUp }">
-        <v-img
-            v-if="layout"
-            gradient="267deg, #1414148c 100%, #1414148c 100%"
-            dark
-            height="100%"
-            :position="$vuetify.breakpoint.mdAndUp ? '50% 25%' : null"
-            :src="layout.images.background"
+    <div class="d-flex layout pa-4" >
+        <div 
+            class="background-image rounded-lg" 
+            :class="{ 'background-size-sm': $vuetify.breakpoint.smAndUp }"
         >
-            <div class="h-100 container text-center pa-0">
-                <div class="center container">
-                    <p class="text-md-h1 text-h3 title text-shadow my-3">{{ bride.firstname }} & {{ groom.firstname }}</p> 
-                    <v-divider class="line" /> 
-                    <p class="text-md-h6 text-subtitle my-3">{{ layout.text }}</p>
-                </div>
-            </div>
-        </v-img>
+
+        </div>
     </div>
 </template>
 
@@ -25,9 +15,6 @@ export default {
     name: 'layout',
     computed:{
         ...mapState({
-            bride: state => state.guest.configurations.bride,
-            groom: state => state.guest.configurations.groom,
-            wedding_date: state => state.guest.configurations.wedding_date,
             layout: state => state.guest.configurations.layout
         })
     }
@@ -37,11 +24,18 @@ export default {
 <style scoped>
 .layout{
     height: 80vh;
-    width: 100vw;
+    width: 100%;
 }
-.layout-md{
-    height: 80vh;
-    width: 100vw;
+.background-image{
+    background-image: url('~@/assets/principal.png');
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: 245vw;
+}
+.background-size-sm{
+    background-size: cover !important;
 }
 .container{
     display: flex;

@@ -3,11 +3,11 @@
         <v-main v-if="ready && !loading">
             <layout />
             <counter ref="counter" />
-            <parents ref="parents"  class="my-md-8"/>
-            <attend ref="attend" />
+            <parents ref="parents" />
             <location ref="location" />
+            <attend ref="attend" />
             <gifts ref="gifts" />
-            <gallery />
+            <!-- <gallery /> -->
         </v-main>
         <v-main v-else-if="loading">
             <div class="main-helper">
@@ -39,7 +39,7 @@ import gifts from '../components/gifts.vue'
 import attend from '../components/attend.vue'
 import location from '../components/location.vue'
 import parents from '../components/parents.vue'
-import gallery from '../components/gallery.vue'
+// import gallery from '../components/gallery.vue'
 
 export default {
     components: {
@@ -49,7 +49,7 @@ export default {
         attend,
         location,
         parents,
-        gallery
+        // gallery
     },
     name: 'App',
     computed: {
@@ -105,7 +105,9 @@ p,
 .title,
 .v-application .title,
 .title [class*='text-'] {
-    font-family: 'Dancing Script', cursive !important;
+    /* font-family: 'Dancing Script', cursive !important; */
+    font-family: 'Alex Brush', cursive !important;
+
 }
 .main-helper {
     display: flex;
@@ -113,5 +115,11 @@ p,
     flex-direction: column;
     justify-content: center;
     height: 100vh;
+}
+.align-item-center{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>
