@@ -109,7 +109,7 @@ export default {
     name: 'gifts',
     computed: {
         ...mapState({
-            gifts: (state) => state.guest.configurations.gifts,
+            gifts: (state) => state.invitation.configurations.gifts,
         }),
     },
     data() {

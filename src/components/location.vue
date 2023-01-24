@@ -77,9 +77,9 @@ export default {
     name: 'location',
     computed: {
         ...mapState({
-            locations: (state) => state.guest.configurations.locations,
-            dresscode: (state) => state.guest.configurations.dresscode,
-            date: (state) => state.guest.configurations.date
+            locations: (state) => state.invitation.configurations.locations,
+            dresscode: (state) => state.invitation.configurations.dresscode,
+            date: (state) => state.invitation.configurations.date
         }),
     },
 }

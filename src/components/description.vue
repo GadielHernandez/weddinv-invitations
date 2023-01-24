@@ -16,7 +16,7 @@ export default {
     name: 'description',
     computed: {
         ...mapState({
-            description: state => state.guest.configurations.history.description
+            description: state => state.invitation.configurations.history.description
         })
     }
 }

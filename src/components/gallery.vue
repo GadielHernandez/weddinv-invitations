@@ -20,7 +20,7 @@ export default {
     computed:{
         ...mapState({
             images: state => {
-                const images = state.guest.configurations.gallery.images || {}
+                const images = state.invitation.configurations.gallery.images || {}
                 const img_array = []
                 for (const url in images) {
                     if (Object.hasOwnProperty.call(images, url)) {
@@ -30,7 +30,7 @@ export default {
                 return img_array
             } ,
             width: state => {
-                const images = state.guest.configurations.gallery.images || {}
+                const images = state.invitation.configurations.gallery.images || {}
                 const img_array = Object.keys(images)
                 const n_images = img_array.length
                 if(!n_images) return 12

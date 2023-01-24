@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import guest from './modules/guest'
+import invitation from './modules/invitation'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
-        guest
+        invitation
     },
 })

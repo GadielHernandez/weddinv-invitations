@@ -174,8 +174,8 @@ export default {
     name: 'game',
     computed: {
         ...mapState({
-            points: (state) => state.guest.points,
-            questions: (state) => state.guest.quiz,
+            points: (state) => state.invitation.points,
+            questions: (state) => state.invitation.quiz,
             ranking: (state) => {
                 const rank = {
                     0: { name: 'Disponible', points: 0 },
@@ -189,8 +189,8 @@ export default {
                     8: { name: 'Disponible', points: 0 },
                     9: { name: 'Disponible', points: 0 }
                 }
-                if (!state.guest.ranking) return rank
-                state.guest.ranking.forEach((people, index) => {
+                if (!state.invitation.ranking) return rank
+                state.invitation.ranking.forEach((people, index) => {
                     rank[index].name = people.name
                     rank[index].points = people.points
                 })
@@ -211,9 +211,9 @@ export default {
     },
     methods: {
         ...mapActions({
-            getRank: 'guest/getGameRanking',
-            getGameQuiz: 'guest/getGameQuiz',
-            sendPoints: 'guest/sendPoints'
+            getRank: 'invitation/getGameRanking',
+            getGameQuiz: 'invitation/getGameQuiz',
+            sendPoints: 'invitation/sendPoints'
         }),
         starQuiz() {
             this.index = 0

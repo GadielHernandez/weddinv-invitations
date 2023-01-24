@@ -2,7 +2,6 @@ import { db, storage } from '../../plugins/firebase'
 const state = {
     wedding: null,
     id: null,
-    n_guests: null,
     name: null,
     confirm: null,
     quiz: [],
@@ -48,13 +47,13 @@ const actions = {
                 .catch((e) => reject(e))
         })
     },
-    checkGuest({ commit, state }, id) {
+    checkInvitation({ commit, state }, id) {
         return new Promise((resolve, reject) => {
             db.doc(`${state.wedding}/${id}`)
                 .get()
                 .then((doc) => {
                     if (!doc.exists) return resolve()
-                    commit('UPDATE_GUEST', { id, ...doc.data() })
+                    commit('UPDATE_INVITATION', { id, ...doc.data() })
                     return resolve({ id, ...doc.data() })
                 })
                 .catch((err) => {
@@ -124,10 +123,10 @@ const mutations = {
         delete payload.id
         state.configurations = payload
     },
-    UPDATE_GUEST(state, payload) {
+    UPDATE_INVITATION(state, payload) {
         state.id = payload.id
         state.name = payload.name
-        state.n_guests = payload.guests
+        state.guests = payload.guests
         state.confirm = payload.confirm
         ;(state.points = payload.points), (state.out_time = payload.out_time)
     },

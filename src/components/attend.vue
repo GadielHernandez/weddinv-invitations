@@ -93,14 +93,14 @@ export default {
     name: 'attend',
     computed: {
         ...mapState({
-            id: (state) => state.guest.id,
-            name: (state) => state.guest.name,
-            n_guests: (state) => state.guest.n_guests,
-            confirm: (state) => state.guest.confirm,
-            out_time: (state) => state.guest.out_time,
-            kids_allowed: (state) => state.guest.configurations.kids,
+            id: (state) => state.invitation.id,
+            name: (state) => state.invitation.name,
+            n_guests: (state) => state.invitation.n_guests,
+            confirm: (state) => state.invitation.confirm,
+            out_time: (state) => state.invitation.out_time,
+            kids_allowed: (state) => state.invitation.configurations.kids,
             image: (state) =>
-                state.guest.images_urls && state.guest.images_urls.layout,
+                state.invitation.images_urls && state.invitation.images_urls.layout,
         }),
     },
     data() {
@@ -110,7 +110,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions({ doConfirmation: 'guest/confirmAttendace' }),
+        ...mapActions({ doConfirmation: 'invitation/confirmAttendace' }),
         getNumberGuest() {
             this.numberGuests = []
             if (this.n_guests)

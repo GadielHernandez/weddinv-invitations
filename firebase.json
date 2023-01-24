@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "alondrayalonso",
+    "site": "ivanaisaac",
     "public": "dist",
     "ignore": [
       "firebase.json",

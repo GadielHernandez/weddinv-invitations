@@ -23,7 +23,7 @@ export default {
     name: 'testigos',
     computed:{
         ...mapState({
-            images: state => state.guest.images_urls.galery ? state.guest.images_urls.galery : []
+            images: state => state.invitation.images_urls.galery ? state.invitation.images_urls.galery : []
         })
     },
 }

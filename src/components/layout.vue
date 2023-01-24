@@ -15,7 +15,7 @@ export default {
     name: 'layout',
     computed:{
         ...mapState({
-            layout: state => state.guest.configurations.layout
+            layout: state => state.invitation.configurations.layout
         })
     }
 }

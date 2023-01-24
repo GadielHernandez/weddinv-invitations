@@ -77,9 +77,9 @@ export default {
     name: 'parents',
     computed: {
         ...mapState({
-            parents: (state) => state.guest.configurations.parents,
-            bride: (state) => state.guest.configurations.bride,
-            groom: (state) => state.guest.configurations.groom,
+            parents: (state) => state.invitation.configurations.parents,
+            bride: (state) => state.invitation.configurations.bride,
+            groom: (state) => state.invitation.configurations.groom,
         }),
     },
 }

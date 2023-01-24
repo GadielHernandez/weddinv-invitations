@@ -57,7 +57,7 @@ export default {
     name: 'Counter',
     computed: {
         ...mapState({
-            date: (state) => state.guest.configurations.date,
+            date: (state) => state.invitation.configurations.date,
         }),
     },
     data() {

@@ -55,7 +55,7 @@ export default {
     computed: {
         ...mapState({
             ready: (state) =>
-                state.guest.wedding && state.guest.configurations,
+                state.invitation.wedding && state.invitation.configurations,
         }),
     },
     data() {
@@ -65,8 +65,8 @@ export default {
     },
     methods: {
         ...mapActions({
-            checkGuest: 'guest/checkGuest',
-            setWedding: 'guest/setWedding',
+            checkGuest: 'invitation/checkInvitation',
+            setWedding: 'invitation/setWedding',
         }),
         goto(refName) {
             const element = this.$refs[refName]
