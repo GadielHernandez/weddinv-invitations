@@ -4,6 +4,8 @@ const state = {
     id: null,
     name: null,
     confirm: null,
+    attendace: null,
+    guests: [],
     quiz: [],
     points: null,
     ranking: [],
@@ -65,7 +67,10 @@ const actions = {
     confirmAttendace({ commit, state }, data) {
         return new Promise((resolve, reject) => {
             db.doc(`${state.wedding}/${data.id}`)
-                .update({ confirm: data.payload })
+                .update({ 
+                    confirm: true,
+                    guests: data.payload.guests
+                })
                 .then(() => {
                     commit('UPDATE_CONFIRM', data.payload)
                     return resolve({ message: 'done' })
@@ -128,10 +133,12 @@ const mutations = {
         state.name = payload.name
         state.guests = payload.guests
         state.confirm = payload.confirm
-        ;(state.points = payload.points), (state.out_time = payload.out_time)
+        state.points = payload.points
+        state.out_time = payload.out_time
     },
     UPDATE_CONFIRM(state, payload) {
-        state.confirm = payload
+        state.confirm = true
+        state.guests = payload.guests
     },
     UPDATE_POINTS(state, payload) {
         state.points = payload
